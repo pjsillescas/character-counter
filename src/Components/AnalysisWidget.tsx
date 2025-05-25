@@ -1,3 +1,4 @@
+import CharacterWidget from "./CharacterWidget";
 import type { TextAnalysisResult } from "./Types";
 
 type AnalysisWidgetProps = {
@@ -11,6 +12,6 @@ export default function AnalysisWidget({ analysis }: AnalysisWidgetProps) {
 		<p>{`${analysis.numWords} Words Count`}</p>
 		<p>{`${analysis.numSentences} Sentence Count`}</p>
 
-		{Object.entries(analysis.letterResults).map(([c, num]) => (<p>{`${c} ${(num * 100 / numCharacters).toFixed(2)}%`}</p>))}
+		{Object.entries(analysis.letterResults).map(([c, num]) => (<CharacterWidget character={c} frequency={num * 100 / numCharacters} />))}
 	</div>);
 }
